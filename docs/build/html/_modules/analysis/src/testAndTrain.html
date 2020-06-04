@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>analysis.src.testAndTrain &mdash; My Algo Trader 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'0.0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> My Algo Trader
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">My Algo Trader</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>analysis.src.testAndTrain</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for analysis.src.testAndTrain</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Test and Train ML Algorithm</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">analysis.src.labelFunctions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">analysis.src.setup</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">analysis.src.features</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">analysis.src.fetchData</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">analysis.src.globals</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1"># This function gives us a prediction between [-3,-2,-1,0,1,2,3]</span>
+<span class="c1"># WE could instead use the probabilities that the classifier provides for each of these</span>
+<span class="c1"># labels and computed a weighted average signal</span>
+
+<div class="viewcode-block" id="getPredictionsProb"><a class="viewcode-back" href="../../../index.html#analysis.src.testAndTrain.getPredictionsProb">[docs]</a><span class="k">def</span> <span class="nf">getPredictionsProb</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">trainStart</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in getPredictionsProb&#39;</span><span class="p">)</span>
+    <span class="c1"># This function will take in a test period, for each data point in that</span>
+    <span class="c1"># period it will give us a prediction in [-3,-2,-1,0,1,2,3]</span>
+
+
+    <span class="c1"># It will use the algorithm that is chosen by the user</span>
+    <span class="n">algo</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;algo&#39;</span><span class="p">]</span>
+    <span class="n">algo_params</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;algo_params&#39;</span><span class="p">]</span>
+    <span class="n">testData</span><span class="o">=</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># We get the test data points represented using the features</span>
+
+    <span class="c1"># For each test data point a classifier will be trained using the</span>
+    <span class="c1"># training data from trainStart to testDate-1,</span>
+
+    <span class="n">start_date</span><span class="o">=</span><span class="n">trainStart</span>
+    <span class="n">dates</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">testData</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="n">predictions</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">dates</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dates</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">end_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">testData</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">testPoint</span> <span class="o">=</span> <span class="n">testData</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+        <span class="c1"># This is the training period used for the current testPoint</span>
+
+        <span class="n">clf</span><span class="o">=</span><span class="n">algo</span><span class="p">(</span><span class="o">**</span><span class="n">algo_params</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span><span class="o">=</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">)</span>
+
+        <span class="c1"># We use an imputer to fill in missing values if any</span>
+        <span class="n">imp</span><span class="o">=</span><span class="n">Imputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="s1">&#39;NaN&#39;</span><span class="p">,</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">imp</span><span class="o">=</span><span class="n">imp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+        <span class="n">features_imp</span><span class="o">=</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="n">clf</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features_imp</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">classes</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span> <span class="c1"># This gives the class labels</span>
+        <span class="n">prediction_proba</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testPoint</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span> <span class="c1"># This is the list of probabilities for each class label</span>
+        <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span><span class="n">prediction_proba</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">predictions</span></div>
+
+<div class="viewcode-block" id="getPredictions"><a class="viewcode-back" href="../../../index.html#analysis.src.testAndTrain.getPredictions">[docs]</a><span class="k">def</span> <span class="nf">getPredictions</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">trainStart</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getPredictions&#39;)</span>
+    <span class="c1"># This function will take in a test period, for each data point in that</span>
+    <span class="c1"># period it will give us a prediction in [-3,-2,-1,0,1,2,3]</span>
+
+
+    <span class="c1"># It will use the algorithm that is chosen by the user</span>
+    <span class="n">algo</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;algo&#39;</span><span class="p">]</span>
+    <span class="n">algo_params</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;algo_params&#39;</span><span class="p">]</span>
+    <span class="c1">#print (&quot;obtaining test data in getPredictions&quot;)</span>
+    <span class="n">testData</span><span class="o">=</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1">#print(&quot;test data in getPredictions obtained&quot;)</span>
+    <span class="c1"># We get the test data points represented using the features</span>
+
+    <span class="c1"># For each test data point a classifier will be trained using the</span>
+    <span class="c1"># training data from trainStart to testDate-1,</span>
+
+    <span class="n">start_date</span><span class="o">=</span><span class="n">trainStart</span>
+    <span class="n">dates</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">testData</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="n">predictions</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">dates</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dates</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">end_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">testData</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">testPoint</span> <span class="o">=</span> <span class="n">testData</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span>
+        <span class="c1">#print (start_date, end_date)</span>
+        <span class="c1"># This is the training period used for the current testPoint</span>
+
+        <span class="n">clf</span><span class="o">=</span><span class="n">algo</span><span class="p">(</span><span class="o">**</span><span class="n">algo_params</span><span class="p">)</span>
+
+        <span class="c1">#print (&#39;getting features for each day&#39;+str(i))</span>
+        <span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span><span class="o">=</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">)</span>
+        <span class="c1">#print (&quot;feature &quot;+str(i)+&quot; obtained&quot;)</span>
+
+        <span class="c1"># We use an imputer to fill in missing values if any</span>
+        <span class="n">imp</span><span class="o">=</span><span class="n">Imputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="s1">&#39;NaN&#39;</span><span class="p">,</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">imp</span><span class="o">=</span><span class="n">imp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="n">features_imp</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+        <span class="c1">#print (features_imp.shape, labels.shape)</span>
+        <span class="n">clf</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features_imp</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testPoint</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))))</span>
+
+    <span class="k">return</span> <span class="n">predictions</span></div>
+
+<span class="c1"># We have the predictions by using this algorithm. WE can now run a backtest, ie</span>
+<span class="c1"># See what the returns and Sharpe Ratio would have been if we used these predictions to</span>
+<span class="c1"># execute trades</span>
+
+<div class="viewcode-block" id="backtestResults"><a class="viewcode-back" href="../../../index.html#analysis.src.testAndTrain.backtestResults">[docs]</a><span class="k">def</span> <span class="nf">backtestResults</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">trainStart</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">,</span><span class="n">predictFn</span><span class="o">=</span><span class="n">getPredictions</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in backtestResults&#39;)</span>
+    <span class="n">predictions</span><span class="o">=</span><span class="n">predictFn</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">trainStart</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">)</span>
+    <span class="c1">#print (&#39;predictions obtained&#39;)</span>
+    <span class="c1"># We also need to get the actual returns</span>
+    <span class="c1">#print (&#39;get actual returns&#39;)</span>
+    <span class="n">returns</span> <span class="o">=</span> <span class="n">getAssetReturns</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">options</span><span class="p">)</span>
+    <span class="c1">#print (&#39;returns obtained&#39;)</span>
+
+    <span class="n">anl_factor</span><span class="o">=</span><span class="mi">252</span>
+    <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;freq&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">anl_factor</span><span class="o">=</span><span class="mi">12</span>
+    <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;freq&quot;</span><span class="p">]</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">anl_factor</span><span class="o">=</span><span class="mi">52</span>
+
+    <span class="n">strat_returns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span><span class="n">returns</span><span class="p">))</span>
+    <span class="n">sharpe</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">anl_factor</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">strat_returns</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">strat_returns</span><span class="p">)</span>
+    <span class="n">returnSeries</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">returns</span><span class="p">,</span><span class="n">strat_returns</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">returnSeries</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Asset_Returns&quot;</span><span class="p">,</span><span class="s2">&quot;Strat_Returns&quot;</span><span class="p">]</span>
+    <span class="n">returnSeries</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="nb">globals</span><span class="p">[</span><span class="s1">&#39;outputFilesPath&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;/Returns.csv&#39;</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sharpe</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">strat_returns</span><span class="p">))</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">strat_returns</span><span class="p">))</span>
+
+    <span class="n">strat_returns</span> <span class="o">=</span> <span class="n">strat_returns</span><span class="o">.</span><span class="n">values</span> <span class="c1">#additional line i put in to convert from series to array for scipy stats below</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">skew</span><span class="p">(</span><span class="n">strat_returns</span><span class="p">,</span><span class="n">nan_policy</span><span class="o">=</span><span class="s2">&quot;omit&quot;</span><span class="p">))</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">strat_returns</span><span class="p">[</span><span class="n">strat_returns</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">strat_returns</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">strat_returns</span><span class="p">[</span><span class="n">strat_returns</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">strat_returns</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+
+    <span class="n">result</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Sharpe&quot;</span><span class="p">,</span><span class="s2">&quot;Mean&quot;</span><span class="p">,</span><span class="s2">&quot;Risk&quot;</span><span class="p">,</span><span class="s2">&quot;Skew&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="si">%u</span><span class="s2">p&quot;</span><span class="p">,</span><span class="s2">&quot;%Down&quot;</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span></div>
+
+<span class="c1"># We need this function that can give us the returns for a ticker between 2 dates</span>
+<span class="c1"># at the specified frequency</span>
+
+<div class="viewcode-block" id="getAssetReturns"><a class="viewcode-back" href="../../../index.html#analysis.src.testAndTrain.getAssetReturns">[docs]</a><span class="k">def</span> <span class="nf">getAssetReturns</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">options</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getAssetReturns&#39;)</span>
+    <span class="c1"># This is just like the features function where we construct all the features</span>
+    <span class="c1"># We just want to return the Return series instead of all the features</span>
+
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">end_date</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+
+    <span class="n">tickerDataRaw</span> <span class="o">=</span> <span class="n">getRawData</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+
+
+    <span class="c1"># Now we setup the data at the right frequency</span>
+    <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;freq&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;freq&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">offset</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">tickerDataRaw</span> <span class="o">=</span> <span class="n">tickerDataRaw</span><span class="p">[</span><span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;tDayinMonth&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span><span class="p">)]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tickerDataRaw</span> <span class="o">=</span> <span class="n">tickerDataRaw</span><span class="p">[</span><span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;tDaysleftMonth&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">offset</span><span class="p">))]</span>
+
+
+        <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;freq&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">tickerDataRaw</span> <span class="o">=</span> <span class="n">tickerDataRaw</span><span class="p">[</span><span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;tDayinWeek&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">offset</span><span class="p">))]</span>
+
+        <span class="c1"># We&#39;ve filtered the data to the right frequency. For each frequency,</span>
+        <span class="c1"># The trailing periods used for momentum, jump calculations are different</span>
+        <span class="c1"># if the frequency is not daily, then recompute the returns</span>
+
+    <span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;Return&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">getReturn</span><span class="p">(</span><span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;Price&quot;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;Return&quot;</span><span class="p">][</span><span class="n">tickerDataRaw</span><span class="o">.</span><span class="n">index</span><span class="o">&gt;=</span><span class="n">start_date</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="getPredictionsNN"><a class="viewcode-back" href="../../../index.html#analysis.src.testAndTrain.getPredictionsNN">[docs]</a><span class="k">def</span> <span class="nf">getPredictionsNN</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">trainStart</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in getPredictionsNN&#39;</span><span class="p">)</span>
+    <span class="c1"># This function will take in a test period, for each data point in that</span>
+    <span class="c1"># period it will give us a prediction in [-3,-2,-1,0,1,2,3]</span>
+
+
+    <span class="c1"># It will use the algorithm that is chosen by the user</span>
+    <span class="n">algo</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;algo&#39;</span><span class="p">]</span>
+    <span class="n">algo_params</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;algo_params&#39;</span><span class="p">]</span>
+    <span class="c1">#print (&#39;obtain test data&#39;)</span>
+    <span class="n">testData</span><span class="o">=</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">testPeriod</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1">#print (testData.head(2))</span>
+    <span class="c1"># We get the test data points represented using the features</span>
+
+    <span class="c1"># For each test data point a classifier will be trained using the</span>
+    <span class="c1"># training data from trainStart to testDate-1,</span>
+
+    <span class="n">start_date</span><span class="o">=</span><span class="n">trainStart</span>
+    <span class="n">dates</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">testData</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="n">predictions</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">dates</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dates</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">end_date</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">testData</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">testPoint</span> <span class="o">=</span> <span class="n">testData</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span><span class="o">.</span><span class="n">values</span>
+        <span class="c1">#print (start_date, end_date)</span>
+        <span class="c1"># This is the training period used for the current testPoint</span>
+
+        <span class="n">clf</span><span class="o">=</span><span class="n">algo</span><span class="p">(</span><span class="o">**</span><span class="n">algo_params</span><span class="p">)</span>
+        <span class="c1">#print (&#39;get features for each date&#39;)</span>
+        <span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span><span class="o">=</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">options</span><span class="p">,</span><span class="n">supportTickers</span><span class="p">,</span><span class="n">assignLabels</span><span class="o">=</span><span class="n">labelId</span><span class="p">)</span>
+        <span class="c1">#print (&#39;features obtined&#39;)</span>
+        <span class="c1"># We use an imputer to fill in missing values if any</span>
+        <span class="n">imp</span><span class="o">=</span><span class="n">Imputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="s1">&#39;NaN&#39;</span><span class="p">,</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">imp</span><span class="o">=</span><span class="n">imp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="c1">#labels = labels.iloc[:-2]</span>
+        <span class="n">features_imp</span><span class="o">=</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="c1">#print(features_imp.shape)</span>
+        <span class="c1">#print(labels)</span>
+        <span class="n">clf</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features_imp</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels3</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">imp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">testPoint</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))))</span>
+        <span class="c1"># With the K-Nearest neighbors the prediction will be the average return of the the</span>
+        <span class="c1"># nearest neighbours. We convert it to a signal in [-3,-2...]</span>
+
+    <span class="k">return</span> <span class="n">predictions</span></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Tim Davies
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

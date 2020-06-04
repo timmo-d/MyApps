@@ -1,0 +1,12 @@
+scikit-learn~=0.19.1
+nose
+sphinx
+xgboost~=1.1.0
+hyperopt~=0.2.4
+django~=3.0.6
+sphinx-rtd-theme
+
+mysql-connector-python~=8.0.20
+pandas~=0.23.0
+numpy~=1.14.3
+scipy~=1.1.0

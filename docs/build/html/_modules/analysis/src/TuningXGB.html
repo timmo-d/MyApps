@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>analysis.src.TuningXGB &mdash; My Algo Trader 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'0.0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> My Algo Trader
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">My Algo Trader</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>analysis.src.TuningXGB</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for analysis.src.TuningXGB</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Optimise strategy to use</span>
+<span class="sd">We&#39;ll write a function that will return the Sharpe ratio for a strategy using the NIFTY</span>
+
+<span class="sd">The below code is what we normally use to test a strategy</span>
+<span class="sd">We want the classifier to be XGBClassifier and the params to be what we pass in</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">xgboost.sklearn</span> <span class="k">import</span> <span class="n">XGBClassifier</span>
+<span class="kn">from</span> <span class="nn">hyperopt</span> <span class="k">import</span> <span class="n">hp</span>
+<span class="kn">from</span> <span class="nn">hyperopt</span> <span class="k">import</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">tpe</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">STATUS_OK</span><span class="p">,</span><span class="n">Trials</span>
+
+<span class="c1"># We want to tune the Gradient boosted classifier, so that we find the optimum set of parameters</span>
+<span class="c1"># For that there are 2 things we need to define</span>
+<span class="c1"># A function that will be minimized by hyperopt</span>
+<span class="kn">from</span> <span class="nn">analysis.src.setup</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">analysis.src.testAndTrain</span> <span class="k">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="score"><a class="viewcode-back" href="../../../index.html#analysis.src.TuningXGB.score">[docs]</a><span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; The function returns -score as we want to maximize Sharpe but hyperopt will try to minimize. A Search space with all the combinations over which the function will be minimized.</span>
+
+<span class="sd">    :param name: The name to use</span>
+<span class="sd">    :type name: None</span>
+<span class="sd">    :param state: None</span>
+<span class="sd">    :type state: None</span>
+<span class="sd">    :returns: None</span>
+<span class="sd">    :raises: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">]</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">])</span>
+
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;qtype&#39;</span><span class="p">:</span> <span class="s1">&#39;adjclose&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;tables&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;stockProd&quot;</span><span class="p">,</span> <span class="s2">&quot;tradingDays&quot;</span><span class="p">],</span>
+               <span class="s1">&#39;freq&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># The frequency of trading, daily=0, monthly=1,weekly=2</span>
+               <span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="c1"># The offset if the period &gt; 1day, ie which trading day in the month/week the strategy will be executed</span>
+               <span class="s1">&#39;pure&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># from here we have the features , the returns as is</span>
+               <span class="s1">&#39;cal&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># Calendar features</span>
+               <span class="s1">&#39;history&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># last 3 periods returns</span>
+               <span class="s1">&#39;momentum&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># momentum features</span>
+               <span class="s1">&#39;jump&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># jump features</span>
+               <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>  <span class="c1"># long term reversal features</span>
+               <span class="s1">&#39;prevWeeks&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># Now by turning this to 1 we can run a model which includes previous weeks</span>
+               <span class="s1">&#39;algo&#39;</span><span class="p">:</span> <span class="n">XGBClassifier</span><span class="p">,</span>
+               <span class="s1">&#39;algo_params&#39;</span><span class="p">:</span> <span class="n">params</span>
+               <span class="p">}</span>
+
+    <span class="n">supportTickers</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">ticker</span> <span class="o">=</span> <span class="s2">&quot;RIO&quot;</span>
+    <span class="n">trainStart</span> <span class="o">=</span> <span class="s2">&quot;2010-01-01&quot;</span>
+    <span class="n">testPeriod</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2013-06-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2016-04-01&quot;</span><span class="p">]</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Training with params&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">backtestResults</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">trainStart</span><span class="p">,</span> <span class="n">testPeriod</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">supportTickers</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Score </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">score</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;loss&#39;</span><span class="p">:</span><span class="o">-</span><span class="n">score</span><span class="p">,</span><span class="s1">&#39;status&#39;</span><span class="p">:</span><span class="n">STATUS_OK</span><span class="p">}</span></div>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">space</span> <span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span><span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span><span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s1">&#39;learning_rate&#39;</span><span class="p">,</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.025</span><span class="p">),</span>
+        <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span><span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s1">&#39;max_depth&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;min_child_weight&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s1">&#39;min_child_weight&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;subsample&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s1">&#39;subsample&#39;</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">),</span>
+        <span class="s1">&#39;gamma&#39;</span><span class="p">:</span><span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s1">&#39;gamma&#39;</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">),</span>
+        <span class="s1">&#39;colsample_bytree&#39;</span><span class="p">:</span><span class="n">hp</span><span class="o">.</span><span class="n">quniform</span><span class="p">(</span><span class="s1">&#39;colsample_bytree&#39;</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">),</span>
+        <span class="s1">&#39;nthread&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span>
+        <span class="s1">&#39;silent&#39;</span><span class="p">:</span><span class="mi">1</span>
+    <span class="p">}</span>
+
+    <span class="n">trials</span> <span class="o">=</span> <span class="n">Trials</span><span class="p">()</span>
+
+    <span class="n">best</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="n">score</span><span class="p">,</span><span class="n">space</span><span class="p">,</span><span class="n">algo</span><span class="o">=</span><span class="n">tpe</span><span class="o">.</span><span class="n">suggest</span><span class="p">,</span><span class="n">trials</span><span class="o">=</span><span class="n">trials</span><span class="p">,</span><span class="n">max_evals</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">best</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Tim Davies
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

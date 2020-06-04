@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>analysis.src.featureFunctions &mdash; My Algo Trader 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'0.0.1',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> My Algo Trader
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">My Algo Trader</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>analysis.src.featureFunctions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for analysis.src.featureFunctions</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module will contain all the functions required to construct the features that we want to use, using the rawdata</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">analysis.src.setup</span> <span class="k">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="getCalFeatures"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.getCalFeatures">[docs]</a><span class="k">def</span> <span class="nf">getCalFeatures</span><span class="p">(</span><span class="n">tickerDataRaw</span><span class="p">,</span><span class="n">start_date</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getCalFeatures&#39;)</span>
+    <span class="k">return</span> <span class="n">tickerDataRaw</span><span class="p">[</span><span class="n">tickerDataRaw</span><span class="o">.</span><span class="n">index</span><span class="o">&gt;=</span><span class="n">start_date</span><span class="p">][[</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span><span class="s2">&quot;Day&quot;</span><span class="p">,</span><span class="s2">&quot;DayofWeek&quot;</span><span class="p">,</span><span class="s2">&quot;tDaysleftMonth&quot;</span><span class="p">]]</span></div>
+<span class="c1"># This will add the month, day , day of the week and trading days left in the month to the</span>
+<span class="c1"># features that will be used to represent at datapoint</span>
+
+<div class="viewcode-block" id="getHistory"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.getHistory">[docs]</a><span class="k">def</span> <span class="nf">getHistory</span><span class="p">(</span><span class="n">returnSeries</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">history</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getHistory&#39;)</span>
+    <span class="c1"># This will add the last 3 periods returns as features, given the return series of the datapoints in question</span>
+    <span class="c1">#print(&#39;returnSeries.shape: &#39;, returnSeries.head())</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">returnSeries</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="c1">#print (&#39;datesShape: &#39; , dates[0], dates[1], dates[2], dates[3],dates[4])</span>
+    <span class="n">start_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dates</span><span class="o">&gt;=</span><span class="n">start_date</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1">#print (&#39;startIdx: &#39;, dates[start_idx])</span>
+    <span class="c1"># This fetches us the position of the start date in the series, the series will contain</span>
+    <span class="c1"># some trailing data behind the start date</span>
+    <span class="c1"># the start_date input to this function is inherently assumed to be of the type datetime.date</span>
+    <span class="n">dateIndex</span><span class="o">=</span><span class="n">returnSeries</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">start_idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="c1">#print(&#39;dateIndex: &#39; , dateIndex[start_idx])</span>
+    <span class="c1"># This creates an index which only contains the dates we care about, the trailing dates are removed</span>
+
+    <span class="n">historydict</span><span class="o">=</span><span class="p">{}</span>
+    <span class="c1"># This will be used to keep track of the series for t-1 , t-2, t-3. Each will become</span>
+    <span class="c1"># a column in a dataframe that will be returned to the calling function</span>
+    <span class="c1">#print (&#39;history: &#39; , history)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">history</span><span class="p">):</span>
+        <span class="c1">#print(&#39;pass number: &#39;, str(i))</span>
+        <span class="n">returnHistory</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">returnSeries</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">start_idx</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="n">i</span><span class="p">])</span>
+        <span class="c1">#print(&#39;returnHistory.shape: &#39; , returnHistory.shape)</span>
+        <span class="c1">#print (&#39;dateIndex.shape: &#39; , dateIndex.shape)</span>
+        <span class="n">returnHistory</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="n">dateIndex</span>
+        <span class="c1"># The above 2 steps assigned to date t , the returns lagged by i periods</span>
+        <span class="n">rname</span><span class="o">=</span><span class="s2">&quot;Hist&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">historydict</span><span class="p">[</span><span class="n">rname</span><span class="p">]</span><span class="o">=</span><span class="n">returnHistory</span>
+        <span class="c1">#print (&#39;historyDict.shape: &#39; , historydict)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">historydict</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="getMomentum"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.getMomentum">[docs]</a><span class="k">def</span> <span class="nf">getMomentum</span><span class="p">(</span><span class="n">tickerDataRawDaily</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getMomentum&#39;)</span>
+    <span class="c1"># This function will return the momentum in 2 different ways</span>
+    <span class="c1"># The sum of returns over the recent period</span>
+    <span class="c1"># The sum of returns / standard deviation</span>
+    <span class="c1"># The period here will be decided by whether we are computing momentum for</span>
+    <span class="c1"># a daily , weekly , monthly strategy</span>
+
+    <span class="n">returnSeries</span><span class="o">=</span><span class="n">tickerDataRawDaily</span><span class="p">[</span><span class="s2">&quot;Return&quot;</span><span class="p">]</span>
+
+    <span class="n">logReturns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;logRtn&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">returnSeries</span><span class="p">)})</span>
+
+    <span class="c1"># Shift the series by 1 day, because on a given day, we want to use the</span>
+    <span class="c1"># returns data till the previous day</span>
+    <span class="n">rtnIndex</span><span class="o">=</span><span class="n">logReturns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">logReturns</span><span class="o">=</span><span class="n">logReturns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="n">rtnIndex</span>
+
+    <span class="c1"># We&#39;ll use a rolling_apply function to compute the sum of returns</span>
+    <span class="c1"># This function will apply on a window whose right edge is the cell under consideration</span>
+    <span class="c1"># For this function to work properly we need to apply it on a series sorted in ascending</span>
+    <span class="c1"># order of date</span>
+
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># logReturns[&quot;Mom_1&quot;]=pd.rolling_apply(logReturns[&quot;logRtn&quot;],period,np.nansum,min_periods=2)</span>
+    <span class="c1"># logReturns[&quot;Mom_2&quot;]=logReturns[&quot;Mom_1&quot;]/pd.rolling_apply(logReturns[&quot;logRtn&quot;],period,np.nanstd,min_periods=2)</span>
+    <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;Mom_1&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">)</span>
+    <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;Mom_2&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;Mom_1&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">,</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">)</span>
+
+    <span class="c1"># sort the dataframe back into descending order</span>
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">logReturns</span></div>
+
+
+<div class="viewcode-block" id="getValue"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.getValue">[docs]</a><span class="k">def</span> <span class="nf">getValue</span><span class="p">(</span><span class="n">tickerDataRaw</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getValue&#39;)</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">getMomentum</span><span class="p">(</span><span class="n">tickerDataRaw</span><span class="p">,</span><span class="n">period</span><span class="p">)</span></div>
+<span class="c1"># This is the reversal function. It is exactly the reverse of momentum, except that it is</span>
+<span class="c1"># computed over a longer time period</span>
+
+
+<div class="viewcode-block" id="getJump"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.getJump">[docs]</a><span class="k">def</span> <span class="nf">getJump</span><span class="p">(</span><span class="n">tickerDataRaw</span><span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">25</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getJump&#39;)</span>
+    <span class="c1"># For jump we compare the very short term recent past with a longer period</span>
+
+    <span class="n">returnSeries</span><span class="o">=</span><span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;Return&quot;</span><span class="p">]</span>
+    <span class="c1"># The first few steps are exactly the same as for momentum</span>
+    <span class="n">logReturns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;logRtn&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">returnSeries</span><span class="p">)})</span>
+    <span class="c1"># Shift the series by 1 day, because on a given day, we want to use the</span>
+    <span class="c1"># returns data till the previous day</span>
+    <span class="n">rtnIndex</span> <span class="o">=</span> <span class="n">logReturns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">logReturns</span> <span class="o">=</span> <span class="n">logReturns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rtnIndex</span>
+
+    <span class="c1"># We&#39;ll use a rolling_apply function to compute the sum of returns</span>
+    <span class="c1"># This function will apply on a window whose right edge is the cell under consideration</span>
+    <span class="c1"># For this function to work properly we need to apply it on a series sorted in ascending</span>
+    <span class="c1"># order of date</span>
+
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># logReturns[&quot;Jmp_1&quot;]=pd.rolling_apply(logReturns[&quot;logRtn&quot;],period[0],np.nanmean,min_periods=2)-\</span>
+    <span class="c1">#                     pd.rolling_apply(logReturns[&quot;logRtn&quot;],period[1],np.nanmean,min_periods=2)</span>
+    <span class="c1"># logReturns[&quot;Jmp_2&quot;]=logReturns[&quot;Jmp_1&quot;]/pd.rolling_apply(logReturns[&quot;logRtn&quot;],period[1],np.nanstd,min_periods=2)</span>
+
+    <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;Jmp_1&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">)</span><span class="o">-</span>\
+                        <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">)</span>
+    <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;Jmp_2&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;Jmp_1&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">period</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">min_periods</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">)</span>
+
+    <span class="c1"># We have 2 jump measures here, using the difference of returns in the 2 periods,</span>
+    <span class="c1"># and in the second we normalize this measure</span>
+
+    <span class="k">del</span> <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span>
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">logReturns</span></div>
+
+
+<span class="c1"># We&#39;ll write a function to compute a categorical variable</span>
+
+<div class="viewcode-block" id="getPrevWeeks"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.getPrevWeeks">[docs]</a><span class="k">def</span> <span class="nf">getPrevWeeks</span><span class="p">(</span><span class="n">tickerDataRaw</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in getPrevWeeks&#39;)</span>
+    <span class="n">period</span><span class="o">=</span><span class="mi">24</span> <span class="c1"># This specifies that we are using the last 4 weeks . We take each &quot;week&quot; to be a period of</span>
+    <span class="c1"># 6 trading days</span>
+
+    <span class="n">returnSeries</span> <span class="o">=</span><span class="n">tickerDataRaw</span><span class="p">[</span><span class="s2">&quot;Return&quot;</span><span class="p">]</span>
+    <span class="c1">#print(returnSeries.head())</span>
+    <span class="c1"># The first few steps are exactly the same as for momentum</span>
+    <span class="n">logReturns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;logRtn&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">returnSeries</span><span class="p">)})</span>
+    <span class="c1"># Shift the series by 1 day, because on a given day, we want to use the</span>
+    <span class="c1"># returns data till the previous day</span>
+    <span class="n">rtnIndex</span> <span class="o">=</span> <span class="n">logReturns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">logReturns</span> <span class="o">=</span> <span class="n">logReturns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">rtnIndex</span>
+    <span class="c1">#print(logReturns.head())</span>
+    <span class="c1"># We&#39;ll use a rolling_apply function to compute the sum of returns</span>
+    <span class="c1"># This function will apply on a window whose right edge is the cell under consideration</span>
+    <span class="c1"># For this function to work properly we need to apply it on a series sorted in ascending</span>
+    <span class="c1"># order of date</span>
+
+    <span class="n">logReturns</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># WE have the same set of steps to prepare the returns as for momentum and jump</span>
+    <span class="c1">#logReturns[&quot;prevWeeks&quot;]=pd.rolling_apply(logReturns[&quot;logRtn&quot;],period,daysToWeeks,min_periods=2)</span>
+    <span class="c1">#print(logReturns.head())</span>
+    <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;prevWeeks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">period</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">daysToWeeks</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">logReturns</span><span class="p">[</span><span class="s2">&quot;logRtn&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">logReturns</span></div>
+
+
+   <span class="c1"># The function daysToWeeks is where the trends in the past 4 weeks are identified and coded into a 4 digit integer</span>
+   <span class="c1"># The rolling apply will only work on functions which take a series and return an integer</span>
+<div class="viewcode-block" id="daysToWeeks"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.daysToWeeks">[docs]</a><span class="k">def</span> <span class="nf">daysToWeeks</span><span class="p">(</span><span class="n">dailyRtns</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in daystoweeks&#39;)</span>
+    <span class="c1">#print(dailyRtns.size)</span>
+    <span class="n">weekSignals</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">dailyRtns</span><span class="o">.</span><span class="n">size</span><span class="o">/</span><span class="mi">6</span><span class="p">)):</span>
+        <span class="n">weeklyRtn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dailyRtns</span><span class="p">[(</span><span class="n">i</span><span class="o">*</span><span class="mi">6</span><span class="p">):</span><span class="n">i</span><span class="o">*</span><span class="mi">6</span><span class="o">+</span><span class="mi">6</span><span class="p">]))</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">weekSignals</span><span class="o">=</span><span class="n">weekSignals</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">weektype</span><span class="p">(</span><span class="n">weeklyRtn</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">weekSignals</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="weektype"><a class="viewcode-back" href="../../../index.html#analysis.src.featureFunctions.weektype">[docs]</a><span class="k">def</span> <span class="nf">weektype</span><span class="p">(</span><span class="n">weeklyRtn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function does something.</span>
+
+<span class="sd">	:param name: The name to use</span>
+<span class="sd">	:type name: None</span>
+<span class="sd">	:param state: None</span>
+<span class="sd">	:type state: None</span>
+<span class="sd">	:returns: None</span>
+<span class="sd">	:raises: None</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+    <span class="c1">#print(&#39;in weektype&#39;)</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">weeklyRtn</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">0.015</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">weeklyRtn</span><span class="o">&gt;</span><span class="mf">0.015</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">3</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Tim Davies
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>
