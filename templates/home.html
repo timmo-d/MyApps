@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main role="main">
+
+      <!-- Main jumbotron for a primary message -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">HOME PAGE</h1>
+          <p>Welcome to my algorithmic trading platform! This page allows you to download historical prices for companies listed on the ASX and applies machine learning to them to understand trends and patterns so that buy/sell/hold recommendations can be made.</p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Data Management</h2>
+            <p>This page acts as a control panel to enable you to determine which data to download, loads the data into a database, cleans the data and then loads the data into production system ready for analysis. </p>
+            <p><a class="btn btn-secondary" href="{% url 'datamgt' %}" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Analysis</h2>
+            <p>This page is also a control panel, but this one applies selected machine learning algorithms to particular stocks so that recommendations can be made with regards to buy/sell or hold.. </p>
+            <p><a class="btn btn-secondary" href="{% url 'analysis' %}" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Manage Portfolio</h2>
+            <p>With an understanding of the analysis this page can allow you to adapt your poprtfolio to apply the recommendations.</p>
+            <p><a class="btn btn-secondary" href="{% url 'about' %}" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+{% endblock content %}

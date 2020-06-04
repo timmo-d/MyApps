@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main role="main">
+      <!-- Main jumbotron for a primary message -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Data Management</h1>
+          <p>Data mangement page to download and load data for analysis.</p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <form action="" method="post">
+          {% csrf_token %}
+          <table>
+          {{ form.as_table }}
+          </table>
+          <input type="submit" value="Submit">
+        </form>
+
+      </div> <!-- /container -->
+
+    </main>
+{% endblock content %}
