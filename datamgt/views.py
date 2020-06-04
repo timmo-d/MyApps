@@ -6,7 +6,7 @@ from django.urls import reverse
 from .forms import Options
 from .models import DataMgtOptions
 
-from .src.control import executeOptions
+from .src.controller import executeOptions
 
 
 # Create your views here.
