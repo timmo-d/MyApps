@@ -16,6 +16,7 @@ class Options(forms.Form):
 	opt8 = forms.BooleanField(required=False)
 	opt9 = forms.BooleanField(required=False)
 	opt10 = forms.BooleanField(required=False)
+	opt11 = forms.BooleanField(required=False)
 
 	def clean_opt1(self):
 		data = self.cleaned_data['opt1']
@@ -67,5 +68,9 @@ class Options(forms.Form):
 
 		return data
 
+	def clean_opt11(self):
+		data = self.cleaned_data['opt11']
+
+		return data
 
 

@@ -1,4 +1,4 @@
-use asx;
+use myasx;
 
 create table if not exists stockStaging (
     datestamp date,

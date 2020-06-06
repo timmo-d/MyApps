@@ -1,4 +1,4 @@
-use asx;
+use myasx;
 
 create table tDays
 (select distinct datestamp as tDay from indiciesProd where symbol = "AORD"

@@ -4,9 +4,9 @@
 
 """
 
-import src.data.control
-import src.data.download
-import src.data.stage
+import datamgt.src.control
+import datamgt.src.download
+import datamgt.src.stage
 
 def start():
     "This starts this module running ..."
