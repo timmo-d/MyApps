@@ -7,5 +7,4 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('datamgt/', create, name='datamgt'),
     path('data-output/', DataOutputView.as_view(), name='data-output'),
-
 ]

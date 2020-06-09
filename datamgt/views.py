@@ -45,7 +45,7 @@ def create(response):
             t = DataMgtOptions(opt1=opt1,opt2=opt2,opt3=opt3,opt4=opt4,opt5=opt5,opt6=opt6,opt7=opt7,opt8=opt8,opt9=opt9,opt10=opt10,opt11=opt11)
             t.save()
             messages.info(response, 'Commencing running options.')
-            subprocess.call(executeOptions(response))
+            executeOptions(response)
             messages.info(response, 'Options complete')
         return HttpResponseRedirect(reverse('datamgt'))
 
@@ -54,5 +54,4 @@ def create(response):
         # form = get_object_or_404(Options)
 
     return render(response, "datamgt.html", {"form":form})
-
 

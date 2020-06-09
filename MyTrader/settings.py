@@ -35,10 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'datamgt.apps.DatamgtConfig',
     'analysis.apps.AnalysisConfig',
+    'channels',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +72,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'MyTrader.wsgi.application'
+#WSGI_APPLICATION = 'MyTrader.wsgi.application'
+# Channels settings
+ASGI_APPLICATION = "MyTrader.routing.application"
 
 
 # Database
@@ -132,4 +137,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), '/static/',]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), '/static/',] #Don't think this line is working...
+

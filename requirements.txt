@@ -5,7 +5,9 @@ xgboost
 hyperopt
 django
 sphinx-rtd-theme
-
+channels
+channels-redis
+django-redis
 mysql-connector-python
 pandas
 numpy
