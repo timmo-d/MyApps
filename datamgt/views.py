@@ -13,7 +13,7 @@ from .src.controller import executeOptions
 
 # Create your views here.
 class HomePageView(TemplateView):
-    template_name = 'home.html'
+    template_name = 'my_trader/home.html'
 
 
 class AboutPageView(TemplateView):

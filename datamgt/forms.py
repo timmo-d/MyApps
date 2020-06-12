@@ -4,17 +4,17 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Options(forms.Form):
-	opt1 = forms.BooleanField(required=False)
-	opt2 = forms.BooleanField(required=False)
-	opt3 = forms.BooleanField(required=False)
-	opt4 = forms.BooleanField(required=False)
-	opt5 = forms.BooleanField(required=False)
-	opt6 = forms.BooleanField(required=False)
-	opt7 = forms.BooleanField(required=False)
-	opt8 = forms.BooleanField(required=False)
-	opt9 = forms.BooleanField(required=False)
-	opt10 = forms.BooleanField(required=False)
-	opt11 = forms.BooleanField(required=False)
+	opt1 = forms.BooleanField(required=False, label='Create database tables?')
+	opt2 = forms.BooleanField(required=False, label='2')
+	opt3 = forms.BooleanField(required=False, label='3')
+	opt4 = forms.BooleanField(required=False, label='4')
+	opt5 = forms.BooleanField(required=False, label='5')
+	opt6 = forms.BooleanField(required=False, label='6')
+	opt7 = forms.BooleanField(required=False, label='7')
+	opt8 = forms.BooleanField(required=False, label='8')
+	opt9 = forms.BooleanField(required=False, label='9')
+	opt10 = forms.BooleanField(required=False, label='10')
+	opt11 = forms.BooleanField(required=False, label='11')
 
 	def clean_opt1(self):
 		data = self.cleaned_data['opt1']

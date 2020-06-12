@@ -137,7 +137,7 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "my_trader.static"),
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),
 
 ]
 
