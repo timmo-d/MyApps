@@ -1,5 +1,5 @@
 """
-ASGI config for MyTrader project.
+ASGI config for my_trader project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyTrader.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'my_trader.settings')
 
 application = get_asgi_application()
