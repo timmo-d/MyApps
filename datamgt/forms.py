@@ -4,17 +4,17 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Options(forms.Form):
-	opt1 = forms.BooleanField(required=False, label='Create database tables?')
-	opt2 = forms.BooleanField(required=False, label='2')
-	opt3 = forms.BooleanField(required=False, label='3')
-	opt4 = forms.BooleanField(required=False, label='4')
-	opt5 = forms.BooleanField(required=False, label='5')
-	opt6 = forms.BooleanField(required=False, label='6')
-	opt7 = forms.BooleanField(required=False, label='7')
-	opt8 = forms.BooleanField(required=False, label='8')
-	opt9 = forms.BooleanField(required=False, label='9')
-	opt10 = forms.BooleanField(required=False, label='10')
-	opt11 = forms.BooleanField(required=False, label='11')
+	opt1 = forms.BooleanField(required=False, label='Create staging tables?')
+	opt2 = forms.BooleanField(required=False, label='Get ASX companies')
+	opt3 = forms.BooleanField(required=False, label='Stage ASX companies')
+	opt4 = forms.BooleanField(required=False, label='Stage changes in tickers')
+	opt5 = forms.BooleanField(required=False, label='Get SAX Indicies History')
+	opt6 = forms.BooleanField(required=False, label ='Stage indicies ')
+	opt7 = forms.BooleanField(required=False, label='Get historical price data')
+	opt8 = forms.BooleanField(required=False, label='Stage prices')
+	opt9 = forms.BooleanField(required=False, label='Load production tables')
+	opt10 = forms.BooleanField(required=False, label='Build calendar features')
+	opt11 = forms.BooleanField(required=False, label='Run testing scripts')
 
 	def clean_opt1(self):
 		data = self.cleaned_data['opt1']

@@ -21,7 +21,8 @@ class AboutPageView(TemplateView):
 
 
 class DataMgtPageView(TemplateView):
-    template_name = 'datamgt.html'
+    template_name = 'datamgt/index.html'
+    model = DataMgtOptions
 
 
 class DataOutputView(TemplateView):
@@ -53,5 +54,5 @@ def create(response):
         form = Options()
         # form = get_object_or_404(Options)
 
-    return render(response, "datamgt.html", {"form":form})
+    return render(response, "index.html", {"form":form})
 

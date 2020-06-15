@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 
-
+from . import views
+app_name = 'my_trader'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('analysis.urls')),
     path('', include('datamgt.urls')),
-    url(r'^chat/', include('chat.urls')),
+    path('', views.HomePageView.as_view(), name='home'),
+    path('', include('chat.urls')),
 ]
