@@ -1,11 +1,9 @@
 from django.urls import path
 
-from .views import HomePageView, AboutPageView, create, DataOutputView
+from . import views
 
 app_name = 'datamgt'
 urlpatterns = [
-    path('about/', AboutPageView.as_view(), name='about'),
-    path('', HomePageView.as_view(), name='home'),
-    path('datamgt/', create, name='index'),
-    path('data-output/', DataOutputView.as_view(), name='data-output'),
+    path('', views.DataMgtPageView.as_view(), name='datamgt'),
+    path('', views.create, name='datamgt'),
 ]

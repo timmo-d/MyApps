@@ -1,4 +1,4 @@
-# mysite/routing.py
+# my_trader/routing.py
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 import chat.routing

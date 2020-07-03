@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'datamgt.apps.DatamgtConfig',
+    #'datamgt.apps.DatamgtConfig',
     'analysis.apps.AnalysisConfig',
     'channels',
     'chat.apps.ChatConfig',
+    'pages.apps.PagesConfig',
+    'sentiment.apps.SentimentConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -137,8 +143,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),
 
-]
 
 

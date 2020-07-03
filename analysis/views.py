@@ -1,18 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+
 # Create your views here.
-
-
-class HomePageView(TemplateView):
-    template_name = 'home.html'
-
-
-class AboutPageView(TemplateView):
-    template_name = 'about.html'
-
-
 class AnalysisPageView(TemplateView):
-    template_name = 'analysis.html'
+    template_name = 'analysis/index.html'
 
 

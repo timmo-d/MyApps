@@ -15,14 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import url
 
-from . import views
-app_name = 'my_trader'
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('analysis.urls')),
-    path('', include('datamgt.urls')),
-    path('', views.HomePageView.as_view(), name='home'),
-    path('', include('chat.urls')),
+    path('', include('pages.urls')),
+    path('chat/', include('chat.urls')),
+    path('analysis/', include('analysis.urls')),
+    #path('datamgt/', include('datamgt.urls')),
+    path('sentiment/', include('sentiment.urls')),
 ]
