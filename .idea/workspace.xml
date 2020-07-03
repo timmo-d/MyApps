@@ -20,31 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2460e4f7-8bee-4daa-9506-60a61e075a2e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/sentiment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/templates/sentiment/sentiment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MyTrader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MyTrader.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamgt/templates/datamgt/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/datamgt/templates/datamgt/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamgt/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/datamgt/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datamgt/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/datamgt/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_trader/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_trader/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_trader/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_trader/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_trader/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/templates/analysis/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/data-output.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/data-output.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/messages.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/messages.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/messages_orig.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/messages_orig.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sentiment/src/sentiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/sentiment.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,14 +64,14 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\pages\templates\pages" />
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\analysis\templates\analysis" />
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\datamgt\templates\datamgt" />
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\datamgt\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\pages" />
     </key>
   </component>
   <component name="RunManager">
@@ -130,6 +113,14 @@
       <option name="presentableId" value="Default" />
       <updated>1592740702196</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added base sentiment app">
+      <created>1593761349679</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593761349679</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +134,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added base sentiment app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added base sentiment app" />
   </component>
   <component name="WindowStateProjectService">
     <state x="845" y="382" key="#Notifications" timestamp="1592741735922">
@@ -173,6 +168,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592741143513" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1593761372544">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593761372544" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593760353313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

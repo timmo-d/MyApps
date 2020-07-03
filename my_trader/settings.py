@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'datamgt.apps.DatamgtConfig',
+    'datamgt.apps.DatamgtConfig',
     'analysis.apps.AnalysisConfig',
     'channels',
     'chat.apps.ChatConfig',

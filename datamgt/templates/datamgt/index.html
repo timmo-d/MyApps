@@ -1,5 +1,5 @@
 {% extends 'pages/base.html' %}
-{% include "pages/messages.html" %}
+
 {% block content %}
       <!-- Main jumbotron for a primary message -->
       <div class="jumbotron">
@@ -9,7 +9,8 @@
           <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
       </div>
-
+<!--
+{% include "pages/messages.html" %}
       <div class="container">
         <div class="row">
           <div class="col-md-4">
@@ -26,7 +27,8 @@
             </div>
         </div>
 
-      </div> <!-- /container -->
+      </div>
+-->
     <script>
       window.setTimeout(function() {
         $(".alert").fadeTo(1000,0).slideUp(1000, function(){

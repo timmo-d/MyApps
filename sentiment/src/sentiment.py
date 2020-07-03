@@ -23,10 +23,10 @@ analyser = SentimentIntensityAnalyzer()
 translator = Translator()
 sns.set()
 
-consumer_key = 'ZaFg0zBZvrxFGDbjczrWnBu1H'
-consumer_secret = 't7S2Nw26ikoQfHZx4Lk72rOcwKRZKOxfcbyGKuf0jw4dTwxFnt'
-access_token = '3348364639-Y9KXaRHrGbGb6KYsEwcdWlf8wQboNWEXXMma2lu'
-access_token_secret = 'QkuEzXfKSqZgv2cU0aX1Ke2r8CKp6BvmCNOkGPRtV4GlD'
+consumer_key = 'KEY'
+consumer_secret = 'KEY'
+access_token = 'KEY'
+access_token_secret = 'KEY'
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
