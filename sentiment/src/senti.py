@@ -17,16 +17,17 @@ from nltk.stem.porter import *
 from wordcloud import WordCloud, STOPWORDS
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from googletrans import Translator
+from sentiment.src.keys import twitter_keys
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 analyser = SentimentIntensityAnalyzer()
 translator = Translator()
 sns.set()
 
-consumer_key = 'KEY'
-consumer_secret = 'KEY'
-access_token = 'KEY'
-access_token_secret = 'KEY'
+consumer_key = twitter_keys['consumer_key']
+consumer_secret = twitter_keys['consumer_secret']
+access_token = twitter_keys['access_token']
+access_token_secret = twitter_keys['access_token_secret']
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)

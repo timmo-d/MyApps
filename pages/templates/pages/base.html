@@ -21,7 +21,7 @@
 
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'pages:home' %}">Web Apps</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Web Apps</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,16 +30,14 @@
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Apps</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="{% url 'analysis:analysis' %}">Securities</a>
-              <a class="dropdown-item" href="{% url 'analysis:analysis' %}">Derivatives</a>
-              <a class="dropdown-item" href="{% url 'analysis:analysis' %}">Cryptos</a>
+              <a class="dropdown-item" href="{% url 'chat:index' %}">Chat</a>
+              <a class="dropdown-item" href="{% url 'datamgt:index' %}">Data Mgt</a>
+              <a class="dropdown-item" href="{% url 'analysis:index' %}">Analysis</a>
             </div>
           </li>
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chrissy's Apps</a>
             <div class="dropdown-menu" aria-labelledby="dropdown02">
-              <a class="dropdown-item" href="{% url 'sentiment:sentiment' %}">Sentiment Analysis</a>
-              <a class="dropdown-item" href="{% url 'sentiment:sentiment' %}">Sentiment Analysis</a>
               <a class="dropdown-item" href="{% url 'sentiment:sentiment' %}">Sentiment Analysis</a>
             </div>
           </li>

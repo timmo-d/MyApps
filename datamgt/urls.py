@@ -3,6 +3,6 @@ from . import views
 
 app_name = 'datamgt'
 urlpatterns = [
-    path('', views.DataMgtPageView.as_view(), name='datamgt'),
-    #path('', views.create, name='datamgt'),
+    #path('', views.DataMgtPageView.as_view(), name='index'),
+    path('', views.create, name='index'),
 ]

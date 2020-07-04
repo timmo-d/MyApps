@@ -2,3 +2,4 @@
 /my_trader/QuantTrader/
 /my_trader/datamgt/downloads/
 /venv/
+/sentiment/src/keys.py
