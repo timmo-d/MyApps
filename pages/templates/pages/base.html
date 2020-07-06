@@ -7,6 +7,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.1.1.min.css" rel="stylesheet" type="text/css">
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
@@ -33,12 +36,13 @@
               <a class="dropdown-item" href="{% url 'chat:index' %}">Chat</a>
               <a class="dropdown-item" href="{% url 'datamgt:index' %}">Data Mgt</a>
               <a class="dropdown-item" href="{% url 'analysis:index' %}">Analysis</a>
+              <a class="dropdown-item" href="{% url 'plotter:index' %}">Plotter</a>
             </div>
           </li>
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chrissy's Apps</a>
             <div class="dropdown-menu" aria-labelledby="dropdown02">
-              <a class="dropdown-item" href="{% url 'sentiment:sentiment' %}">Sentiment Analysis</a>
+              <a class="dropdown-item" href="{% url 'sentiment:index' %}">Sentiment Analysis</a>
             </div>
           </li>
           <li class="nav-item active">

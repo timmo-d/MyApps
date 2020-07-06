@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'chat.apps.ChatConfig',
     'pages.apps.PagesConfig',
     'sentiment.apps.SentimentConfig',
+    'plotter.apps.PlotterConfig',
 ]
 
 MIDDLEWARE = [

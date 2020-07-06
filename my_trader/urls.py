@@ -25,4 +25,5 @@ urlpatterns = [
     path('datamgt/', include('datamgt.urls')),
     path('sentiment/', include('sentiment.urls')),
     path('pages/', include('pages.urls')),
+    path('plotter/', include('plotter.urls')),
 ]

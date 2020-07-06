@@ -202,11 +202,11 @@ def main():
     #
     # df_tws = pd.read_csv(file_name)
     # df_tws['text'] = clean_tweets(df_tws['text'])
-    # df_tws['sentiment'] = anl_tweets(df_tws.text)
+    # df_tws['plotter'] = anl_tweets(df_tws.text)
     #
     # # Words in positive tweets
-    # tws_pos = df_tws['text'][df_tws['sentiment']==1]
-    # tws_neg = df_tws['text'][df_tws['sentiment'] == -1]
+    # tws_pos = df_tws['text'][df_tws['plotter']==1]
+    # tws_neg = df_tws['text'][df_tws['plotter'] == -1]
     #
     # print(df_tws.head())
     # word_cloud(df_tws.text)
@@ -214,9 +214,9 @@ def main():
     # word_cloud(tws_neg)
     #
     # # extracting hashtags from positive tweets
-    # HT_positive = hashtag_extract(df_tws['text'][df_tws['sentiment'] == 1])
+    # HT_positive = hashtag_extract(df_tws['text'][df_tws['plotter'] == 1])
     # # extracting hashtags from negative tweets
-    # HT_negative = hashtag_extract(df_tws['text'][df_tws['sentiment'] == -1])
+    # HT_negative = hashtag_extract(df_tws['text'][df_tws['plotter'] == -1])
     # # unnesting list
     # HT_positive = sum(HT_positive,[])
     # HT_negative = sum(HT_negative,[])

@@ -1,4 +1,4 @@
-# chat/urls.py
+# chat/urls_old.py
 from django.conf.urls import url
 
 from . import views
