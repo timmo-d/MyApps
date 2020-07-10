@@ -170,6 +170,44 @@ def hashtag_extract(x):
         hashtags.append(ht)
     return hashtags
 
+def get_tweets(handle):
+    tweets = api.user_timeline(handle, count=5250, tweet_mode='extended')
+
+    rows = []
+    for t in tweets:
+        rows.append([t.author.screen_name,t.created_at,t.full_text,analyser.polarity_scores(t.full_text),sentiment_analyzer_scores(t.full_text)])
+
+    df_tws=pd.DataFrame(rows, columns=['author','created','text','polarity','sentiment'])
+    df_tws['text'] = clean_tweets(df_tws['text'])
+    print(df_tws.head())
+
+
+    HT_positive = hashtag_extract(df_tws['text'][df_tws['sentiment'] == 1]) # extracting hashtags from positive tweets
+    HT_negative = hashtag_extract(df_tws['text'][df_tws['sentiment'] == -1]) # extracting hashtags from negative tweets
+    # unnesting list
+    HT_positive = sum(HT_positive,[])
+    HT_negative = sum(HT_negative,[])
+
+    # Plot Pareto of positive tweets
+    a = nltk.FreqDist(HT_positive)
+    d = pd.DataFrame({'Hashtag': list(a.keys()),
+                      'Count': list(a.values())})
+    # Select top 10 most frequent hashtags
+    d = d.nlargest(columns="Count", n = 10)
+    # plt.figure(figsize=(16,15))
+    # ax = sns.barplot(data=d, x = "Hashtag", y="Count")
+    # ax.set(ylabel = 'Count')
+    # plt.show()
+
+
+
+
+    return d
+
+
+
+
+
 
 
 def main():
@@ -179,6 +217,7 @@ def main():
     # print(analyser.polarity_scores(text))
 
     tweets = api.user_timeline('@DrCDavies', count=5, tweet_mode='extended')
+
     for t in tweets:
         print(t.full_text)
         print(analyser.polarity_scores(t.full_text))
@@ -202,11 +241,11 @@ def main():
     #
     # df_tws = pd.read_csv(file_name)
     # df_tws['text'] = clean_tweets(df_tws['text'])
-    # df_tws['plotter'] = anl_tweets(df_tws.text)
+    # df_tws['sentiment'] = anl_tweets(df_tws.text)
     #
     # # Words in positive tweets
-    # tws_pos = df_tws['text'][df_tws['plotter']==1]
-    # tws_neg = df_tws['text'][df_tws['plotter'] == -1]
+    # tws_pos = df_tws['text'][df_tws['sentiment']==1]
+    # tws_neg = df_tws['text'][df_tws['sentiment'] == -1]
     #
     # print(df_tws.head())
     # word_cloud(df_tws.text)
@@ -214,9 +253,9 @@ def main():
     # word_cloud(tws_neg)
     #
     # # extracting hashtags from positive tweets
-    # HT_positive = hashtag_extract(df_tws['text'][df_tws['plotter'] == 1])
+    # HT_positive = hashtag_extract(df_tws['text'][df_tws['sentiment'] == 1])
     # # extracting hashtags from negative tweets
-    # HT_negative = hashtag_extract(df_tws['text'][df_tws['plotter'] == -1])
+    # HT_negative = hashtag_extract(df_tws['text'][df_tws['sentiment'] == -1])
     # # unnesting list
     # HT_positive = sum(HT_positive,[])
     # HT_negative = sum(HT_negative,[])

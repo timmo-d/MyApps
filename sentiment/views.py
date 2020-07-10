@@ -7,9 +7,76 @@ from bokeh.models import ColumnDataSource
 from bokeh.plotting import figure
 from bokeh.sampledata.periodic_table import elements
 from bokeh.transform import dodge, factor_cmap
-# Create your views here.
 
+import colorcet as cc
+from numpy import linspace
+from scipy.stats.kde import gaussian_kde
+
+from bokeh.io import output_file, show
+from bokeh.models import ColumnDataSource, FixedTicker, PrintfTickFormatter
+from bokeh.plotting import figure
+from bokeh.sampledata.perceptions import probly
+import sentiment.src.GetOldTweets.got3 as got
+import pandas as pd
+
+from bokeh.io import output_file, show
+from bokeh.models import ColumnDataSource
+from bokeh.palettes import Spectral5
+from bokeh.plotting import figure
+from bokeh.sampledata.autompg import autompg as df
+from bokeh.transform import factor_cmap
+from sentiment.src.senti import *
+
+# Create your views here.
 def index(request):
+    if request.method == "GET":
+        return render(request, 'sentiment/index.html')
+
+    elif request.method == "POST":
+        #TODO: create Bokeh tabs to display multiple analyses
+        #get tweets as per search criteria
+        seachquery = request.POST['tw_search']
+        tweetCriteria = got.manager.TweetCriteria().setQuerySearch(seachquery).setSince("2020-05-01").setUntil("2020-05-02").setMaxTweets(0)
+        #TODO: create user defined dates
+        #TODO: user defined field for max tweets to retrieve
+        tweets = got.manager.TweetManager.getTweets(tweetCriteria)
+
+        # add tweets to dataframe
+        rows = []
+        for t in tweets:
+            rows.append([t.username, t.date, t.geo, t.retweets, t.text, t.mentions, t.hashtags, sentiment_analyzer_scores(t.text)])
+        df_tws = pd.DataFrame(rows, columns=['username', 'date', 'location', 'retweets', 'text', 'mentions','hashtags', 'sentiment'])
+        df_tws['text'] = clean_tweets(df_tws['text'])
+        print(df_tws)
+
+        # count sentiments from each tweet
+        tw_pos = sum(df_tws['sentiment'] == 1)
+        tw_neu = sum(df_tws['sentiment'] == 0)
+        tw_neg = sum(df_tws['sentiment'] == -1)
+
+        # plot results
+        group = ['Negative', 'Neutral', 'Positive']
+        counts = [tw_neg, tw_neu, tw_pos]
+        p = figure(plot_height=450, x_range=group, title='Sentiment Analysis', toolbar_location=None, tools='')
+        p.vbar(x=group, top=counts, width=0.8) #, source=source)
+        p.y_range.start = 0
+        p.xgrid.grid_line_color = None
+        p.xaxis.axis_label = 'Hashtags'
+        p.xaxis.major_label_orientation = 1.2
+        p.outline_line_color = None
+
+
+        # return chart results to webpage
+        script, div = components(p)
+        return render(request, 'sentiment/index.html', {'script' : script , 'div' : div} )
+    else:
+        pass
+
+
+
+
+
+def periodicTable(request):
     periods = ["I", "II", "III", "IV", "V", "VI", "VII"]
     groups = [str(x) for x in range(1, 19)]
 
@@ -80,3 +147,4 @@ def index(request):
 
     script, div = components(p)
     return render(request, 'sentiment/index.html', {'script' : script , 'div' : div} )
+
