@@ -1,4 +1,5 @@
 from bokeh.plotting import figure
+from bokeh.models.tools import HoverTool
 
 def getSentiment(df_tws):
 	# count sentiments from each tweet
@@ -16,4 +17,17 @@ def getSentiment(df_tws):
 	p.xaxis.axis_label = 'Hashtags'
 	p.xaxis.major_label_orientation = 1.2
 	p.outline_line_color = None
+
+	p.legend.location = 'top_left'
+	p.legend.click_policy = 'hide'
+	hover = HoverTool()
+	hover.tooltips = [
+		('Negative', '@tw_neg'),
+		('Neutral', '@tw_neu'),
+		('Positive', '@tw_pos')
+	]
+	p.add_tools(hover)
+
+
+
 	return p

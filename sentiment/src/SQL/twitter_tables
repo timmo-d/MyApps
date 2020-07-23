@@ -1,0 +1,22 @@
+use tweets_db;
+
+create table if not exists tweetsStaging (
+    id float,
+    keyword varchar(256),
+    username varchar(256),
+    tweetdate date,
+    retweets float,
+    favorites float,
+    rawtext varchar(256),
+    geo float,
+    mentions float,
+    hashtags varchar(256),
+    permalink varchar(256),
+);
+
+create table if not exists updates (
+    keyword varchar(256),
+    lastupdate date
+);
+
+

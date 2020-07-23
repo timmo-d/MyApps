@@ -20,13 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2460e4f7-8bee-4daa-9506-60a61e075a2e" name="Default Changelist" comment="Added plotter app">
-      <change afterPath="$PROJECT_DIR$/sentiment/src/analysis_geo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/analysis_main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/analysis_sentiment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/analysis_table.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/periodic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis/src/pca.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis/src/sentiment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sentiment/src/SQL/createTwitterDB.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sentiment/src/SQL/twitter_tables" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sentiment/src/download.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sentiment/src/load.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sentiment/src/stage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqlclient-1.4.6-cp36-cp36m-win_amd64.whl" beforeDir="false" afterPath="$PROJECT_DIR$/mysqlclient-1.4.6-cp36-cp36m-win_amd64.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_sentiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_sentiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/templates/sentiment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/templates/sentiment/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/views.py" afterDir="false" />
     </list>
@@ -65,13 +70,6 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src\GetOldTweets" />
-      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\templates" />
-      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\pages\templates\pages" />
-      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\downloads" />
-      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src" />
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src\GetOldTweets" />
@@ -79,21 +77,34 @@
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\my_trader" />
       <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src\keys" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src\GetOldTweets" />
+      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\templates" />
+      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\pages\templates\pages" />
+      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\downloads" />
+      <recent name="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.Main">
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.MyTrader">
+    <configuration name="MyTrader" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MyTrader" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="consumer_key" value="ZaFg0zBZvrxFGDbjczrWnBu1H" />
+        <env name="consumer_secret" value="t7S2Nw26ikoQfHZx4Lk72rOcwKRZKOxfcbyGKuf0jw4dTwxFnt" />
+        <env name="access_token" value="3348364639-Y9KXaRHrGbGb6KYsEwcdWlf8wQboNWEXXMma2lu" />
+        <env name="access_token_secret" value="QkuEzXfKSqZgv2cU0aX1Ke2r8CKp6BvmCNOkGPRtV4GlD" />
+        <env name="db_user" value="root" />
+        <env name="db_pw" value="Xanglesprat" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sentiment/src/GetOldTweets-python-master" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sentiment/src/GetOldTweets-python-master/Main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sentiment/src/download.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -102,7 +113,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="senti (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="sentiment" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MyTrader" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="consumer_key" value="ZaFg0zBZvrxFGDbjczrWnBu1H" />
+        <env name="consumer_secret" value="t7S2Nw26ikoQfHZx4Lk72rOcwKRZKOxfcbyGKuf0jw4dTwxFnt" />
+        <env name="access_token_key" value="3348364639-Y9KXaRHrGbGb6KYsEwcdWlf8wQboNWEXXMma2lu" />
+        <env name="access_token_secret" value="QkuEzXfKSqZgv2cU0aX1Ke2r8CKp6BvmCNOkGPRtV4GlD" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/src/sentiment.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MyTrader" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -114,7 +150,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sentiment/src/senti.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sentiment/src/temp.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -123,53 +159,16 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="senti" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="MyTrader" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sentiment/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\tdavi\OneDrive - University of Wollongong\(3) Personal\(1) Hobbies\Tech\MyTrader\sentiment\src\senti.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="MyTrader" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plotter" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plotter/views.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Python.MyTrader" />
+      <item itemvalue="Python.sentiment" />
+      <item itemvalue="Python.temp" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Main" />
-        <item itemvalue="Python.views" />
-        <item itemvalue="Python.senti (1)" />
+        <item itemvalue="Python.MyTrader" />
+        <item itemvalue="Python.temp" />
+        <item itemvalue="Python.sentiment" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594388732038</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added tabbed analysis framework">
+      <created>1594479020762</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1594479020762</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -250,37 +256,66 @@
     <MESSAGE value="Fixed reverse issues" />
     <MESSAGE value="Added plotter app" />
     <MESSAGE value="Imported GOT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Imported GOT" />
+    <MESSAGE value="Added tabbed analysis framework" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tabbed analysis framework" />
   </component>
   <component name="WindowStateProjectService">
     <state x="845" y="382" key="#Notifications" timestamp="1592741735922">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="845" y="382" key="#Notifications/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592741735922" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595393530598">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595393530598" />
+    <state x="710" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595058916268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="710" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595058916268" />
     <state x="1983" y="87" width="1736" height="856" key="DiffContextDialog" timestamp="1593854949527">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="1983" y="87" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593854949527" />
+    <state x="463" y="274" width="885" height="490" key="EnvironmentVariablesDialog" timestamp="1595393520707">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="463" y="274" width="885" height="490" key="EnvironmentVariablesDialog/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595393520707" />
     <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1592741044164">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592741044164" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1594299032769">
+    <state width="1515" height="323" key="GridCell.Tab.0.bottom" timestamp="1595471687571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594299032769" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1594299032769">
+    <state width="1515" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
+    <state width="1515" height="323" key="GridCell.Tab.0.center" timestamp="1595471687571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594299032769" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1594299032768">
+    <state width="1515" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
+    <state width="1515" height="323" key="GridCell.Tab.0.left" timestamp="1595471687571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594299032768" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1594299032769">
+    <state width="1515" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
+    <state width="1515" height="323" key="GridCell.Tab.0.right" timestamp="1595471687571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594299032769" />
+    <state width="1515" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
+    <state width="949" height="348" key="GridCell.Tab.1.bottom" timestamp="1595063071103">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071103" />
+    <state width="949" height="348" key="GridCell.Tab.1.center" timestamp="1595063071102">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071102" />
+    <state width="949" height="348" key="GridCell.Tab.1.left" timestamp="1595063071102">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071102" />
+    <state width="949" height="348" key="GridCell.Tab.1.right" timestamp="1595063071102">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071102" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1592741143513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -289,6 +324,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593856431241" />
+    <state x="769" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594645190872">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1594645190872" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1593760353313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

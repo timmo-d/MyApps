@@ -2,7 +2,7 @@ from django.shortcuts import render
 from bokeh.embed import components
 
 # Each tab is drawn by one script
-from .src.analysis_main import getData
+from .src.analysis_main import getData, getLocalData
 from .src.analysis_sentiment import getSentiment
 from .src.analysis_table import getSummary
 from .src.analysis_geo import getLocations
@@ -23,7 +23,7 @@ def index(request):
 		# from_date = '2020-05-01'
 		# to_date = '2020-05-02'
 		# max_tweets = 0
-		df_tws = getData(seachquery, from_date, to_date, int(max_tweets))
+		df_tws = getLocalData(seachquery, from_date, to_date, int(max_tweets))
 		print(df_tws)
 
 		# get results from each analysis
