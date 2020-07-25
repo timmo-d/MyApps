@@ -20,18 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2460e4f7-8bee-4daa-9506-60a61e075a2e" name="Default Changelist" comment="Added plotter app">
-      <change afterPath="$PROJECT_DIR$/analysis/src/pca.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis/src/sentiment.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/SQL/createTwitterDB.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/SQL/twitter_tables" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/download.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/load.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment/src/stage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysqlclient-1.4.6-cp36-cp36m-win_amd64.whl" beforeDir="false" afterPath="$PROJECT_DIR$/mysqlclient-1.4.6-cp36-cp36m-win_amd64.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/templates/pages/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_sentiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_sentiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sentiment/src/download.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/download.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/templates/sentiment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/templates/sentiment/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/views.py" afterDir="false" />
     </list>
@@ -225,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594479020762</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Tweets download to database">
+      <created>1595506604082</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1595506604083</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -257,7 +257,8 @@
     <MESSAGE value="Added plotter app" />
     <MESSAGE value="Imported GOT" />
     <MESSAGE value="Added tabbed analysis framework" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tabbed analysis framework" />
+    <MESSAGE value="Tweets download to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tweets download to database" />
   </component>
   <component name="WindowStateProjectService">
     <state x="845" y="382" key="#Notifications" timestamp="1592741735922">
@@ -284,38 +285,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592741044164" />
-    <state width="1515" height="323" key="GridCell.Tab.0.bottom" timestamp="1595471687571">
+    <state width="1509" height="323" key="GridCell.Tab.0.bottom" timestamp="1595683306085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1515" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
-    <state width="1515" height="323" key="GridCell.Tab.0.center" timestamp="1595471687571">
+    <state width="1509" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
+    <state width="1509" height="323" key="GridCell.Tab.0.center" timestamp="1595683306085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1515" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
-    <state width="1515" height="323" key="GridCell.Tab.0.left" timestamp="1595471687571">
+    <state width="1509" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
+    <state width="1509" height="323" key="GridCell.Tab.0.left" timestamp="1595683306085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1515" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
-    <state width="1515" height="323" key="GridCell.Tab.0.right" timestamp="1595471687571">
+    <state width="1509" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
+    <state width="1509" height="323" key="GridCell.Tab.0.right" timestamp="1595683306085">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1515" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595471687571" />
-    <state width="949" height="348" key="GridCell.Tab.1.bottom" timestamp="1595063071103">
+    <state width="1509" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
+    <state width="949" height="348" key="GridCell.Tab.1.bottom" timestamp="1595578443536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071103" />
-    <state width="949" height="348" key="GridCell.Tab.1.center" timestamp="1595063071102">
+    <state width="949" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595578443536" />
+    <state width="949" height="348" key="GridCell.Tab.1.center" timestamp="1595578443536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071102" />
-    <state width="949" height="348" key="GridCell.Tab.1.left" timestamp="1595063071102">
+    <state width="949" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595578443536" />
+    <state width="949" height="348" key="GridCell.Tab.1.left" timestamp="1595578443536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071102" />
-    <state width="949" height="348" key="GridCell.Tab.1.right" timestamp="1595063071102">
+    <state width="949" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595578443536" />
+    <state width="949" height="348" key="GridCell.Tab.1.right" timestamp="1595578443536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="949" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595063071102" />
+    <state width="949" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595578443536" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1592741143513">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

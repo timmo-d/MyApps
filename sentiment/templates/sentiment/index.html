@@ -58,6 +58,12 @@
           border-left: none;
           height: 500px;
         }
+
+        .vl {
+          border-left: 3px solid blue;
+          height: 400px;
+        }
+
         </style>
 
 
@@ -103,7 +109,18 @@
         <div id="tab5" class="tabcontent">
           <h3>Timeseries Analysis</h3>
           <p>Some text about the analysis.</p>
-            {{ div4 | safe }}
+          <div class="row">
+            <div class="column">
+              {{ div4 | safe }}
+            </div>
+            <div class="vl"></div>
+            <div class="column">
+              {{ div5 | safe }}
+              {{ div6 | safe }}
+            </div>
+          </div>
+
+
         </div>
 
         <script>
@@ -128,9 +145,11 @@
       </div>
         <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.js"></script>
         <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.1.1.min.js"></script>
+        <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.1.1.min.js"></script>
         {{ script | safe }}
         {{ script2 | safe }}
         {{ script3 | safe }}
         {{ script4 | safe }}
-
+        {{ script5 | safe }}
+        {{ script6 | safe }}
 {% endblock content %}

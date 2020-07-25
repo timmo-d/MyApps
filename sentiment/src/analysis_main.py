@@ -21,7 +21,7 @@ def getData(seachquery, from_date, to_date, max_tweets=10):
 	return df_tws
 
 def getLocalData(seachquery, from_date, to_date, max_tweets=10):
-	query = "SELECT * FROM tweets WHERE keyword='music'"
+	query = "SELECT * FROM tweets"
 	engine = create_engine("mysql+mysqlconnector://{user}:{pw}@127.0.0.1:33066/{db}"
 						   .format(user="root",
 								   pw="Xanglesprat",

@@ -24,24 +24,27 @@ def index(request):
 		# to_date = '2020-05-02'
 		# max_tweets = 0
 		df_tws = getLocalData(seachquery, from_date, to_date, int(max_tweets))
-		print(df_tws)
+		#print(df_tws)
 
 		# get results from each analysis
 		summary = getSummary(df_tws)
 		sentiment = getSentiment(df_tws)
 		geo = getLocations(df_tws)
+		#timeseries, w2, w3 = getTimeSeries(df_tws)
 		timeseries = getTimeSeries(df_tws)
-
 		# return analysis results to webpage
 		script, div = components(summary)
 		script2, div2 = components(sentiment)
 		script3, div3 = components(geo)
 		script4, div4 = components(timeseries)
-
+		#script5, div5 = components(w2)
+		#script6, div6 = components(w3)
 		return render(request, 'sentiment/index.html', {'script' : script , 'div' : div,
 														'div2' : div2, 'script2' : script2,
 														'div3' : div3, 'script3' : script3,
-														'div4' : div4, 'script4' : script4} )
+														'div4' : div4, 'script4' : script4}) #,
+														#'div5' : div5, 'script5' : script5,
+														#'div6' : div6, 'script6' : script6} )
 
 
 	else:
