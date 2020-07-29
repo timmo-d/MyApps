@@ -21,12 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2460e4f7-8bee-4daa-9506-60a61e075a2e" name="Default Changelist" comment="Added plotter app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/templates/pages/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/templates/pages/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_table.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sentiment/src/download.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/src/download.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sentiment/templates/sentiment/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/templates/sentiment/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sentiment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sentiment/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +103,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="analysis_timeseries" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MyTrader" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sentiment/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sentiment/src/analysis_timeseries.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sentiment" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MyTrader" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -156,10 +174,12 @@
       <item itemvalue="Python.MyTrader" />
       <item itemvalue="Python.sentiment" />
       <item itemvalue="Python.temp" />
+      <item itemvalue="Python.analysis_timeseries" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.MyTrader" />
+        <item itemvalue="Python.analysis_timeseries" />
         <item itemvalue="Python.temp" />
         <item itemvalue="Python.sentiment" />
       </list>
@@ -225,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595506604083</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="callbacks for bokeh widgets now working">
+      <created>1595684122921</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1595684122921</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -258,7 +285,8 @@
     <MESSAGE value="Imported GOT" />
     <MESSAGE value="Added tabbed analysis framework" />
     <MESSAGE value="Tweets download to database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tweets download to database" />
+    <MESSAGE value="callbacks for bokeh widgets now working" />
+    <option name="LAST_COMMIT_MESSAGE" value="callbacks for bokeh widgets now working" />
   </component>
   <component name="WindowStateProjectService">
     <state x="845" y="382" key="#Notifications" timestamp="1592741735922">
@@ -285,22 +313,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592741044164" />
-    <state width="1509" height="323" key="GridCell.Tab.0.bottom" timestamp="1595683306085">
+    <state width="1502" height="323" key="GridCell.Tab.0.bottom" timestamp="1596012964932">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1509" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
-    <state width="1509" height="323" key="GridCell.Tab.0.center" timestamp="1595683306085">
+    <state width="1502" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964932" />
+    <state width="1502" height="323" key="GridCell.Tab.0.center" timestamp="1596012964931">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1509" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
-    <state width="1509" height="323" key="GridCell.Tab.0.left" timestamp="1595683306085">
+    <state width="1502" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964931" />
+    <state width="1502" height="323" key="GridCell.Tab.0.left" timestamp="1596012964931">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1509" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
-    <state width="1509" height="323" key="GridCell.Tab.0.right" timestamp="1595683306085">
+    <state width="1502" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964931" />
+    <state width="1502" height="323" key="GridCell.Tab.0.right" timestamp="1596012964931">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1509" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1595683306085" />
+    <state width="1502" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964931" />
     <state width="949" height="348" key="GridCell.Tab.1.bottom" timestamp="1595578443536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

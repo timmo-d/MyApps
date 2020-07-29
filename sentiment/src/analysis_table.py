@@ -1,19 +1,32 @@
+import pandas as pd
+
 from bokeh.plotting import figure
-
+from bokeh.models import ColumnDataSource, TableColumn, DataTable, CDSView, GroupFilter, HTMLTemplateFormatter
+#from bokeh.models.widgets import DataTable, TableColumn
 def getSummary(df_tws):
-	# count sentiments from each tweet
-	tw_pos = sum(df_tws['sentiment'] == 1)
-	tw_neu = sum(df_tws['sentiment'] == 0)
-	tw_neg = sum(df_tws['sentiment'] == -1)
+	# ANOVA in Python: https://www.pythonfordatascience.org/anova-python/
 
-	# plot results
-	group = ['Negative', 'Neutral', 'Positive']
-	counts = [tw_neg, tw_neu, tw_pos]
-	p = figure(plot_height=400, x_range=group, title='Sentiment Analysis', toolbar_location=None, tools='')
-	p.vbar(x=group, top=counts, width=0.8)  # , source=source)
-	p.y_range.start = 0
-	p.xgrid.grid_line_color = None
-	p.xaxis.axis_label = 'Hashtags'
-	p.xaxis.major_label_orientation = 1.2
-	p.outline_line_color = None
-	return p
+	results_data=pd.DataFrame(df_tws.describe())
+	df_results = results_data.reset_index()
+
+	source = ColumnDataSource(df_results)
+	template = """
+	<div style="background:<%= 
+	    (function colorfromint(){
+	        if(value == 1){
+	            return("blue")}
+	        else{return("red")}
+	        }()) %>; 
+	    color: white"> 
+	<%= value %></div>
+	"""
+
+	formater = HTMLTemplateFormatter(template=template)
+	columns = [TableColumn(field='index', title='Statistic'),
+			   TableColumn(field='retweets', title='Retweets'),
+			   TableColumn(field='favorites', title='Favourites'),
+			   TableColumn(field='sentiment', title='Sentiment',formatter=formater)]
+
+	data_table = DataTable(source=source, columns=columns, width=350, height=280, editable=False)
+
+	return data_table

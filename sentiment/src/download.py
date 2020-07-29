@@ -14,9 +14,12 @@ def getQueryDates(keyword):
 		query=str("SELECT date FROM updates WHERE keyword='%s' ORDER BY date DESC LIMIT 1;" % keyword)
 		rs = pd.read_sql(query, con=engine, parse_dates=['date'])
 		since_date = rs['date'].iloc[0]
-		until_date = since_date + datetime.timedelta(days=90)
+		until_date = since_date + datetime.timedelta(days=180)
 		since_date = datetime.datetime.strftime(since_date,"%Y-%m-%d")
 		until_date = datetime.datetime.strftime(until_date,"%Y-%m-%d")
+		# Manual overrides:
+		since_date = '2020-01-31'
+		until_date = '2020-06-30'
 		print('keyword: ' + keyword + ' from: '+ since_date + ' to: ' + until_date)
 
 	except:
@@ -31,10 +34,6 @@ def getQueryDates(keyword):
 def getDownloads(keyword,max_tweets):
 	"""Download tweets according to criteria and upload into database."""
 	since_date, until_date = getQueryDates(keyword)
-	# print(keyword)
-	# print(max_tweets)
-	# print(since_date)
-	# print(until_date)
 
 	try:
 		tweetCriteria = got.manager.TweetCriteria()
@@ -150,7 +149,7 @@ def start_engine():
 								   echo=True))
 	return engine
 if __name__ == "__main__":
-	keyword='art'
+	keyword='song'
 	max_tweets=0
 	num_errors = 0
 	#getQueryDates(keyword)
