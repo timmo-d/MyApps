@@ -1,8 +1,8 @@
 import pandas as pd
 
-from bokeh.plotting import figure
-from bokeh.models import ColumnDataSource, TableColumn, DataTable, CDSView, GroupFilter, HTMLTemplateFormatter
-#from bokeh.models.widgets import DataTable, TableColumn
+from bokeh.models import ColumnDataSource, TableColumn, DataTable, HTMLTemplateFormatter
+
+
 def getSummary(df_tws):
 	# ANOVA in Python: https://www.pythonfordatascience.org/anova-python/
 
@@ -27,6 +27,6 @@ def getSummary(df_tws):
 			   TableColumn(field='favorites', title='Favourites'),
 			   TableColumn(field='sentiment', title='Sentiment',formatter=formater)]
 
-	data_table = DataTable(source=source, columns=columns, width=350, height=280, editable=False)
+	data_table = DataTable(source=source, columns=columns, width=350, height=280, editable=False, index_position=None)
 
 	return data_table

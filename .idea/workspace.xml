@@ -172,9 +172,9 @@
     </configuration>
     <list>
       <item itemvalue="Python.MyTrader" />
+      <item itemvalue="Python.analysis_timeseries" />
       <item itemvalue="Python.sentiment" />
       <item itemvalue="Python.temp" />
-      <item itemvalue="Python.analysis_timeseries" />
     </list>
     <recent_temporary>
       <list>
@@ -252,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595684122921</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Bokeh table and timeseries working">
+      <created>1596022625128</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1596022625128</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -286,7 +293,8 @@
     <MESSAGE value="Added tabbed analysis framework" />
     <MESSAGE value="Tweets download to database" />
     <MESSAGE value="callbacks for bokeh widgets now working" />
-    <option name="LAST_COMMIT_MESSAGE" value="callbacks for bokeh widgets now working" />
+    <MESSAGE value="Bokeh table and timeseries working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bokeh table and timeseries working" />
   </component>
   <component name="WindowStateProjectService">
     <state x="845" y="382" key="#Notifications" timestamp="1592741735922">
@@ -313,22 +321,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592741044164" />
-    <state width="1502" height="323" key="GridCell.Tab.0.bottom" timestamp="1596012964932">
+    <state width="1493" height="323" key="GridCell.Tab.0.bottom" timestamp="1596764273801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1502" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964932" />
-    <state width="1502" height="323" key="GridCell.Tab.0.center" timestamp="1596012964931">
+    <state width="1493" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596764273801" />
+    <state width="1495" height="323" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1596460179971" />
+    <state width="1493" height="323" key="GridCell.Tab.0.center" timestamp="1596764273801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1502" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964931" />
-    <state width="1502" height="323" key="GridCell.Tab.0.left" timestamp="1596012964931">
+    <state width="1493" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596764273801" />
+    <state width="1495" height="323" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1596460179971" />
+    <state width="1493" height="323" key="GridCell.Tab.0.left" timestamp="1596764273801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1502" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964931" />
-    <state width="1502" height="323" key="GridCell.Tab.0.right" timestamp="1596012964931">
+    <state width="1493" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596764273801" />
+    <state width="1495" height="323" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1596460179971" />
+    <state width="1493" height="323" key="GridCell.Tab.0.right" timestamp="1596764273801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1502" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596012964931" />
+    <state width="1493" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596764273801" />
+    <state width="1495" height="323" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040/-1920.0.1920.1040@1920.0.1920.1040" timestamp="1596460179971" />
     <state width="949" height="348" key="GridCell.Tab.1.bottom" timestamp="1595578443536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

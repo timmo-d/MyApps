@@ -50,6 +50,20 @@ def getTimeSeries(df_tws):
 	p.line(x='date', y='art', source=source, line_width=2, color='blue', alpha=0.8, legend_label='art')
 	p.line(x='date', y='music', source=source, line_width=2, color='red', alpha=0.8, legend_label='music')
 	p.line(x='date', y='sing', source=source, line_width=2, color='green', alpha=0.8, legend_label='sing')
+	p.line(x='date', y='song', source=source, line_width=2, color='pink', alpha=0.8, legend_label='song')
+	p.line(x='date', y='health', source=source, line_width=2, color='yellow', alpha=0.8, legend_label='health')
+	p.line(x='date', y='iso ', source=source, line_width=2, color='orange', alpha=0.8, legend_label='iso')
+	p.line(x='date', y='isolation', source=source, line_width=2, color='cyan', alpha=0.8, legend_label='isolation')
+	p.line(x='date', y='paint', source=source, line_width=2, color='magenta', alpha=0.8, legend_label='paint')
+	p.line(x='date', y='covid', source=source, line_width=2, color='purple', alpha=0.8, legend_label='covid')
+
+	print(grouped.head())
+	for col in grouped.columns:
+		if col == 'date':
+			print(col)
+		if col != 'date':
+			print(col)
+			#p.line(x=grouped['date'], y=grouped[col], line_width=2, color='pink', alpha=0.8, legend_label=col)
 
 	p.legend.location = "top_left"
 	p.legend.click_policy = "hide"

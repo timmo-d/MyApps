@@ -18,14 +18,14 @@ def getQueryDates(keyword):
 		since_date = datetime.datetime.strftime(since_date,"%Y-%m-%d")
 		until_date = datetime.datetime.strftime(until_date,"%Y-%m-%d")
 		# Manual overrides:
-		since_date = '2020-01-31'
-		until_date = '2020-06-30'
+		since_date = '2020-04-30'
+		until_date = '2020-05-31'
 		print('keyword: ' + keyword + ' from: '+ since_date + ' to: ' + until_date)
 
 	except:
 		print('An error occurred discovering last update date. Not found?')
 		since_date='2020-01-01'
-		until_date='2020-01-31'
+		until_date='2020-06-30'
 		pass
 
 	return since_date, until_date
@@ -149,10 +149,10 @@ def start_engine():
 								   echo=True))
 	return engine
 if __name__ == "__main__":
-	keyword='song'
+	keyword='covid'
 	max_tweets=0
 	num_errors = 0
-	#getQueryDates(keyword)
+
 	ok = getDownloads(keyword, max_tweets)
 	if ok:
 		ok = addSentiments()
